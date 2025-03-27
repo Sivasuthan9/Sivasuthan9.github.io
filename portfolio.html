@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sivasuthan Sukumar - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e40af',
+                        secondary: '#1d4ed8',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {font-family: 'Poppins', sans-serif; scroll-behavior: smooth;}
+        .animate-fade-in { animation: fadeIn 1s ease-in; }
+        .animate-slide-in { animation: slideIn 1s ease-out; }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        @keyframes slideIn {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation -->
+    <nav class="bg-primary text-white shadow-lg fixed w-full z-10">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="text-xl font-bold">Sivasuthan Sukumar</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="hover:text-blue-200 transition">Home</a>
+                    <a href="#about" class="hover:text-blue-200 transition">About</a>
+                    <a href="#experience" class="hover:text-blue-200 transition">Experience</a>
+                    <a href="#projects" class="hover:text-blue-200 transition">Projects</a>
+                    <a href="#achievements" class="hover:text-blue-200 transition">Achievements</a>
+                    <a href="#skills" class="hover:text-blue-200 transition">Skills</a>
+                    <a href="#contact" class="hover:text-blue-200 transition">Contact</a>
+                </div>
+                <button class="md:hidden" onclick="toggleMenu()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-16 6h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <div class="px-4 py-2 space-y-3">
+                <a href="#home" class="block hover:text-blue-200">Home</a>
+                <a href="#about" class="block hover:text-blue-200">About</a>
+                <a href="#experience" class="block hover:text-blue-200">Experience</a>
+                <a href="#projects" class="block hover:text-blue-200">Projects</a>
+                <a href="#achievements" class="block hover:text-blue-200">Achievements</a>
+                <a href="#skills" class="block hover:text-blue-200">Skills</a>
+                <a href="#contact" class="block hover:text-blue-200">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-24 pb-12 bg-gradient-to-b from-primary to-secondary text-white">
+        <div class="container mx-auto px-6 py-20">
+            <div class="animate-fade-in">
+                <h1 class="text-5xl font-bold mb-4">Hello, I'm Sivasuthan Sukumar</h1>
+                <p class="text-xl mb-8">Electrical Engineering Student & Machine Learning Enthusiast</p>
+                <a href="#contact" class="bg-white text-primary px-8 py-3 rounded-full hover:bg-blue-100 transition">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section with Updated Education -->
+    <section id="about" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-primary mb-8">About Me</h2>
+            <div class="animate-slide-in">
+                <p class="text-lg text-gray-700 mb-6">
+                    A final-year Electrical Engineering undergraduate with a strong passion for machine learning, data analysis,
+                    and AI. Equipped with a solid foundation in both theoretical and practical aspects of engineering, I am
+                    skilled in robotics, data analysis, and machine learning.
+                </p>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold text-primary mb-4">Education</h3>
+                        <div class="mb-6">
+                            <p class="font-semibold">University of Moratuwa</p>
+                            <p>Bachelor of Science in Engineering (Honors) in Electrical Engineering</p>
+                            <p class="text-gray-600">Mar 2021 – Present</p>
+                            <div class="mt-4">
+                                <p class="font-semibold">Relevant Coursework:</p>
+                                <div class="grid grid-cols-2 gap-2 mt-2 text-sm">
+                                    <div>• Data Structures and Algorithms</div>
+                                    <div>• Methods of Mathematics</div>
+                                    <div>• Pattern Recognition</div>
+                                    <div>• Calculus</div>
+                                    <div>• Programming Fundamentals</div>
+                                    <div>• Numerical Methods</div>
+                                    <div>• Modular Software Development</div>
+                                    <div>• Applied Statistics</div>
+                                    <div>• Computer Systems</div>
+                                    <div>• Linear Algebra</div>
+                                    <div>• Introduction to Telecommunications</div>
+                                    <div>• Robotics and Control</div>
+                                    <div>• Linear Models and Multivariate Statistics</div>
+                                    <div>• Embedded Systems Design and Programming</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="font-semibold">Kokuvil Hindu College</p>
+                            <p>G.C.E Advanced Level Examination (Mathematics, Physics, Chemistry – 3A's)</p>
+                            <p class="text-gray-600">Island Rank: 146 | Z-Score: 2.5731</p>
+                            <p class="text-gray-600">Jan 2011 – Aug 2019</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold text-primary mb-4">Languages</h3>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                            <li>English (Fluent)</li>
+                            <li>Tamil (Native)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-primary mb-8">Work Experience</h2>
+            <div class="animate-slide-in">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-primary">Machine Learning Engineering Intern</h3>
+                    <p class="text-gray-600">Jaseci Labs, USA (Remote) | Dec 2023 - June 2024</p>
+                    <div class="mt-4">
+                        <h4 class="font-semibold mb-2">Compilers:</h4>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                            <li>Played a pivotal role in the design and development of Jac, a Python-superset programming language</li>
+                            <li>Designed innovative syntax and semantics, transforming them into Jac AST and seamlessly converting them into equivalent Python AST for execution as Python bytecode</li>
+                            <li>Developed robust plugins, introduced new CLI commands, and meticulously crafted grammar rules using the Lark format</li>
+                        </ul>
+                        <h4 class="font-semibold mt-4 mb-2">Machine Learning:</h4>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                            <li>Built a scalable end-to-end Machine Learning project using MLOps and CI/CD pipelines</li>
+                            <li>Developed modular components for data ingestion, transformation, model training, evaluation, and deployment</li>
+                            <li>Utilized GitHub Actions, AWS S3, EC2, and Docker for deployment</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-primary mb-8">Projects</h2>
+            <div class="grid md:grid-cols-2 gap-8 animate-slide-in">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-primary mb-4">Non-Intrusive Load Monitoring</h3>
+                    <p class="text-gray-700">Developing a transformer-based architecture to classify electrical loads in buildings with high accuracy. Improved energy management strategies by identifying load patterns and optimizing power usage.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-primary mb-4">Mobile App for Plant Disease Diagnosis</h3>
+                    <p class="text-gray-700">AI-driven solution using TensorFlow Lite, FastAPI, and GCP for plant disease detection. Used React.js and React Native for app development.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-primary mb-4">Maze Solver Using Micro Car</h3>
+                    <p class="text-gray-700">Developed a micro car-based maze-solving system utilizing ultrasonic sensors, motor drivers, and Arduino Uno with PID control system.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-primary mb-4">Detecting Gender-based Abusive Language</h3>
+                    <p class="text-gray-700">Classified YouTube comments using XLM-RoBERTa with multi-head attention mechanism for detecting abusive content.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-primary mb-8">Achievements and Awards</h2>
+            <div class="grid md:grid-cols-2 gap-8 animate-slide-in">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-primary mb-4">Research Competition</h3>
+                    <p class="text-gray-700">Won 3rd place for Tamil and 4th for Malayalam in DravidianLangTech@NAACL 2025 (35+ teams, 130+ participants) with a multilingual model for detecting abusive Tamil and Malayalam text targeting women on social media.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-primary mb-4">Scholarship</h3>
+                    <p class="text-gray-700">Recipient of The Queen Elizabeth II Diamond Jubilee Scholarship Program - University of Moratuwa</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-primary mb-8">Skills</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 animate-slide-in">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-primary mb-4">Programming Languages</h3>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2">
+                        <li>Python</li>
+                        <li>SQL</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-primary mb-4">Libraries & Frameworks</h3>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2">
+                        <li>PyTorch</li>
+                        <li>TensorFlow</li>
+                        <li>Pandas</li>
+                        <li>Scikit-learn</li>
+                        <li>OpenCV</li>
+                        <li>Streamlit</li>
+                        <li>FastAPI</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-primary mb-4">Tools & Technologies</h3>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2">
+                        <li>GitHub Actions</li>
+                        <li>Docker</li>
+                        <li>AWS</li>
+                        <li>Google Cloud Platform</li>
+                        <li>LabVIEW</li>
+                        <li>Arduino</li>
+                        <li>PLC Programming</li>
+                        <li>PostgreSQL</li>
+                        <li>MySQL</li>
+                        <li>MATLAB</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-primary mb-8">Contact</h2>
+            <div class="grid md:grid-cols-2 gap-8 animate-slide-in">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-primary mb-4">References</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <p class="font-semibold">Dr. Logeeshan Velmanickam (Ph.D.)</p>
+                            <p>Senior Lecturer, Department of Electrical Engineering</p>
+                            <p>University of Moratuwa</p>
+                            <p class="text-primary">logeeshanv@uom.lk</p>
+                            <p>+94 70 597 6364</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold">Dr. Manuja Gunawardana (Ph.D.)</p>
+                            <p>Senior Lecturer, Department of Electrical Engineering</p>
+                            <p>University of Moratuwa</p>
+                            <p class="text-primary">manujag@uom.lk</p>
+                            <p>+94 77 458 7596</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-primary mb-4">Connect With Me</h3>
+                    <div class="space-y-4">
+                        <a href="https://www.linkedin.com/in/sivasuthan-sukumar/" 
+                           target="_blank" 
+                           class="flex items-center space-x-3 text-gray-700 hover:text-primary transition">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                            <span>LinkedIn Profile</span>
+                        </a>
+                        <div class="text-gray-700 mt-4">
+                            <p class="mb-2">For professional inquiries, please reach out through LinkedIn or contact my references.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-primary text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2024 Sivasuthan Sukumar. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-slide-in');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate-slide-in').forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html>
