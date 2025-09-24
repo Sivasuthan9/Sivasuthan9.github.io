@@ -1,4 +1,160 @@
-package com.speechify;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UserRepository - Java Code</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 300;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header p {
+            margin: 10px 0 0 0;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .code-container {
+            position: relative;
+            margin: 0;
+            background: #2d3748;
+        }
+        
+        .copy-button {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #4299e1;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        
+        .copy-button:hover {
+            background: #3182ce;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .copy-button:active {
+            transform: translateY(0);
+        }
+        
+        pre {
+            margin: 0;
+            padding: 30px 20px 20px 20px;
+            font-size: 14px;
+            line-height: 1.5;
+            overflow-x: auto;
+            background: #2d3748 !important;
+        }
+        
+        code {
+            font-family: 'Fira Code', 'Consolas', 'Monaco', 'Courier New', monospace;
+        }
+        
+        .info-section {
+            padding: 30px;
+            background: #f8f9fa;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .info-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #4299e1;
+        }
+        
+        .info-card h3 {
+            margin: 0 0 10px 0;
+            color: #2d3748;
+            font-size: 1.1rem;
+        }
+        
+        .info-card p {
+            margin: 0;
+            color: #4a5568;
+            font-size: 0.95rem;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            pre {
+                padding: 20px 15px 15px 15px;
+                font-size: 12px;
+            }
+            
+            .copy-button {
+                top: 10px;
+                right: 10px;
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>UserRepository.java</h1>
+            <p>A robust user management repository with caching and async operations</p>
+        </div>
+        
+        <div class="code-container">
+            <button class="copy-button" onclick="copyCode()">📋 Copy Code</button>
+            <pre><code class="language-java">package com.speechify;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -15,20 +171,20 @@ public class UserRepository {
     private static final String USERS_PROPERTY = "users";
     
     private final ObjectMapper objectMapper;
-    private final LRUCache<String, User> cache;
+    private final LRUCache&lt;String, User&gt; cache;
 
-    public UserRepository(ObjectMapper objectMapper, LRUCache<String, User> cache) {
+    public UserRepository(ObjectMapper objectMapper, LRUCache&lt;String, User&gt; cache) {
         this.objectMapper = objectMapper;
         this.cache = cache;
     }
 
     public UserRepository() {
         this.objectMapper = new ObjectMapper();
-        this.cache = new LRUCache<>(100); // Default cache size
+        this.cache = new LRUCache&lt;&gt;(100); // Default cache size
     }
 
-    public CompletableFuture<Boolean> saveUser(User user) {
-        return CompletableFuture.supplyAsync(() -> {
+    public CompletableFuture&lt;Boolean&gt; saveUser(User user) {
+        return CompletableFuture.supplyAsync(() -&gt; {
             try {
                 File dbFile = new File(DB_FILE);
                 ObjectNode root = dbFile.exists() ? 
@@ -41,9 +197,9 @@ public class UserRepository {
 
                 // Check if user exists and update, else add new
                 boolean userExists = false;
-                for (int i = 0; i < users.size(); i++) {
+                for (int i = 0; i &lt; users.size(); i++) {
                     JsonNode userNode = users.get(i);
-                    if (userNode.has("id") && userNode.get("id").asText().equals(user.getId())) {
+                    if (userNode.has("id") &amp;&amp; userNode.get("id").asText().equals(user.getId())) {
                         users.set(i, objectMapper.valueToTree(user));
                         userExists = true;
                         break;
@@ -65,22 +221,22 @@ public class UserRepository {
         });
     }
 
-    public CompletableFuture<List<User>> getAllUsers() {
-        return CompletableFuture.supplyAsync(() -> {
+    public CompletableFuture&lt;List&lt;User&gt;&gt; getAllUsers() {
+        return CompletableFuture.supplyAsync(() -&gt; {
             try {
                 File dbFile = new File(DB_FILE);
                 if (!dbFile.exists()) {
-                    return new ArrayList<>();
+                    return new ArrayList&lt;&gt;();
                 }
 
                 JsonNode root = objectMapper.readTree(dbFile);
                 JsonNode users = root.get(USERS_PROPERTY);
                 
                 if (users == null) {
-                    return new ArrayList<>();
+                    return new ArrayList&lt;&gt;();
                 }
                 
-                List<User> userList = new ArrayList<>();
+                List&lt;User&gt; userList = new ArrayList&lt;&gt;();
 
                 for (JsonNode userNode : users) {
                     User user = objectMapper.treeToValue(userNode, User.class);
@@ -91,19 +247,19 @@ public class UserRepository {
                 }
                 return userList;
             } catch (IOException e) {
-                return new ArrayList<>();
+                return new ArrayList&lt;&gt;();
             }
         });
     }
 
-    public CompletableFuture<User> getUserByEmail(String email) {
+    public CompletableFuture&lt;User&gt; getUserByEmail(String email) {
         // Check cache first
         User cachedUser = cache.get(email);
         if (cachedUser != null) {
             return CompletableFuture.completedFuture(cachedUser);
         }
 
-        return CompletableFuture.supplyAsync(() -> {
+        return CompletableFuture.supplyAsync(() -&gt; {
             try {
                 File dbFile = new File(DB_FILE);
                 if (!dbFile.exists()) {
@@ -118,7 +274,7 @@ public class UserRepository {
                 }
 
                 for (JsonNode userNode : users) {
-                    if (userNode.has("email") && userNode.get("email").asText().equals(email)) {
+                    if (userNode.has("email") &amp;&amp; userNode.get("email").asText().equals(email)) {
                         User user = objectMapper.treeToValue(userNode, User.class);
                         cache.put(user.getId(), user);
                         cache.put(email, user);
@@ -132,18 +288,84 @@ public class UserRepository {
         });
     }
 
-    public CompletableFuture<User> getUserById(String id) {
+    public CompletableFuture&lt;User&gt; getUserById(String id) {
         User cachedUser = cache.get(id);
         if (cachedUser != null) {
             return CompletableFuture.completedFuture(cachedUser);
         }
         
         // Fallback to searching through all users
-        return getAllUsers().thenApply(users -> 
+        return getAllUsers().thenApply(users -&gt; 
             users.stream()
-                .filter(user -> user.getId().equals(id))
+                .filter(user -&gt; user.getId().equals(id))
                 .findFirst()
                 .orElse(null)
         );
     }
-}
+}</code></pre>
+        </div>
+        
+        <div class="info-section">
+            <h2>Code Overview</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>🗃️ Data Storage</h3>
+                    <p>Uses JSON file-based storage with Jackson ObjectMapper for serialization and deserialization of user data.</p>
+                </div>
+                <div class="info-card">
+                    <h3>⚡ Caching</h3>
+                    <p>Implements LRU cache for fast user retrieval by both ID and email, reducing file I/O operations.</p>
+                </div>
+                <div class="info-card">
+                    <h3>🔄 Async Operations</h3>
+                    <p>All database operations use CompletableFuture for non-blocking, asynchronous execution.</p>
+                </div>
+                <div class="info-card">
+                    <h3>🔍 Flexible Queries</h3>
+                    <p>Supports user retrieval by ID, email, and bulk operations with efficient caching strategies.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+    <script>
+        function copyCode() {
+            const codeElement = document.querySelector('code');
+            const text = codeElement.textContent;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                const button = document.querySelector('.copy-button');
+                const originalText = button.textContent;
+                button.textContent = '✅ Copied!';
+                button.style.background = '#48bb78';
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = '#4299e1';
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                
+                const button = document.querySelector('.copy-button');
+                const originalText = button.textContent;
+                button.textContent = '✅ Copied!';
+                button.style.background = '#48bb78';
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = '#4299e1';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
