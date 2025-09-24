@@ -3,558 +3,870 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Java Classes - User Management System</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <title>Sivasuthan Sukumar - Software Engineer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #3b82f6;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            color: var(--text-dark);
+            overflow-x: hidden;
         }
-        
+
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
             background: rgba(255, 255, 255, 0.95);
-            border-radius: 12px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
             overflow: hidden;
         }
-        
-        .header {
-            background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero-content {
             color: white;
-            padding: 30px;
-            text-align: center;
+            z-index: 2;
+            position: relative;
+            animation: fadeInUp 1s ease;
         }
-        
-        .header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            font-weight: 300;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
         }
-        
-        .header p {
-            margin: 10px 0 0 0;
-            font-size: 1.1rem;
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
             opacity: 0.9;
         }
-        
-        .tabs {
-            display: flex;
-            background: #f8f9fa;
-            border-bottom: 1px solid #e2e8f0;
-            overflow-x: auto;
-        }
-        
-        .tab-button {
-            background: none;
-            border: none;
-            padding: 20px 30px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 500;
-            color: #4a5568;
-            transition: all 0.3s ease;
-            border-bottom: 3px solid transparent;
-            white-space: nowrap;
-        }
-        
-        .tab-button:hover {
-            background: rgba(66, 153, 225, 0.1);
-            color: #2d3748;
-        }
-        
-        .tab-button.active {
-            color: #4299e1;
-            border-bottom-color: #4299e1;
-            background: rgba(66, 153, 225, 0.1);
-        }
-        
-        .tab-content {
-            display: none;
-        }
-        
-        .tab-content.active {
-            display: block;
-        }
-        
-        .code-container {
-            position: relative;
-            margin: 0;
-            background: #2d3748;
-        }
-        
-        .copy-button {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: #4299e1;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: all 0.3s ease;
-            z-index: 10;
-        }
-        
-        .copy-button:hover {
-            background: #3182ce;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        
-        .copy-button:active {
-            transform: translateY(0);
-        }
-        
-        pre {
-            margin: 0;
-            padding: 30px 20px 20px 20px;
-            font-size: 14px;
-            line-height: 1.5;
-            overflow-x: auto;
-            background: #2d3748 !important;
-            max-height: 70vh;
-        }
-        
-        code {
-            font-family: 'Fira Code', 'Consolas', 'Monaco', 'Courier New', monospace;
-        }
-        
-        .file-info {
-            background: #4a5568;
-            color: white;
-            padding: 10px 20px;
-            font-size: 14px;
-            font-weight: 500;
-        }
-        
-        .info-section {
-            padding: 30px;
-            background: #f8f9fa;
-            border-top: 1px solid #e2e8f0;
-        }
-        
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        
-        .info-card {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            border-left: 4px solid #4299e1;
-        }
-        
-        .info-card h3 {
-            margin: 0 0 10px 0;
-            color: #2d3748;
+
+        .hero p {
             font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            opacity: 0.9;
         }
-        
-        .info-card p {
-            margin: 0;
-            color: #4a5568;
-            font-size: 0.95rem;
+
+        .contact-info {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
         }
-        
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        /* Education */
+        .education {
+            background: var(--bg-light);
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .education-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .education-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .education-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .education-card .degree {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-card .period {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Experience */
+        .experience-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-color);
+        }
+
+        .experience-item {
+            position: relative;
+            margin-bottom: 2rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            margin-left: 2rem;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -3rem;
+            top: 2rem;
+            width: 12px;
+            height: 12px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+
+        .experience-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .company {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .period {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .experience-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .experience-item li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-item li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Skills */
+        .skills {
+            background: var(--bg-light);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .skill-category h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: var(--accent-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card-header {
+            background: var(--gradient);
+            color: white;
+            padding: 1.5rem;
+        }
+
+        .project-card h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .project-tech {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .project-card-body {
+            padding: 1.5rem;
+        }
+
+        /* Achievements */
+        .achievements {
+            background: var(--bg-light);
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .achievement-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .achievement-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(1deg); }
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            body {
-                padding: 10px;
+            .nav-links {
+                display: none;
             }
             
-            .header h1 {
-                font-size: 2rem;
+            .hero h1 {
+                font-size: 2.5rem;
             }
             
-            .tab-button {
-                padding: 15px 20px;
-                font-size: 0.9rem;
+            .hero .subtitle {
+                font-size: 1.2rem;
             }
             
-            pre {
-                padding: 20px 15px 15px 15px;
-                font-size: 12px;
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
             }
             
-            .copy-button {
-                top: 10px;
-                right: 10px;
-                padding: 6px 12px;
-                font-size: 12px;
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .experience-timeline {
+                padding-left: 1rem;
+            }
+            
+            .experience-item {
+                margin-left: 1rem;
+            }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Java User Management System</h1>
-            <p>Complete user management classes with service layer, configuration, and models</p>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">Sivasuthan</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Sivasuthan Sukumar</h1>
+                <div class="subtitle">Software Engineer & ML Enthusiast</div>
+                <p>Recent Engineering graduate from University of Moratuwa with a strong passion for Software Engineering and Machine Learning. Skilled in Cloud Computing, DevOps, and modern software development practices.</p>
+                
+                <div class="contact-info">
+                    <a href="tel:+94750159605" class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        +94-750159605
+                    </a>
+                    <a href="mailto:sivasuthansukumar@gmail.com" class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        sivasuthansukumar@gmail.com
+                    </a>
+                    <span class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Colombo, Sri Lanka
+                    </span>
+                </div>
+
+                <div class="cta-buttons">
+                    <a href="#projects" class="btn btn-primary">
+                        <i class="fas fa-code"></i>
+                        View Projects
+                    </a>
+                    <a href="https://github.com/Sivasuthan9" class="btn btn-secondary" target="_blank">
+                        <i class="fab fa-github"></i>
+                        GitHub
+                    </a>
+                </div>
+            </div>
         </div>
-        
-        <div class="tabs">
-            <button class="tab-button active" onclick="switchTab('userservice')">
-                📊 UserService.java
-            </button>
-            <button class="tab-button" onclick="switchTab('appconfig')">
-                ⚙️ ApplicationConfig.java
-            </button>
-            <button class="tab-button" onclick="switchTab('user')">
-                👤 User.java
-            </button>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down" style="color: white; font-size: 1.5rem;"></i>
         </div>
-        
-        <!-- UserService Tab -->
-        <div class="tab-content active" id="userservice">
-            <div class="file-info">📄 UserService.java - Business logic layer for user operations</div>
-            <div class="code-container">
-                <button class="copy-button" onclick="copyCode('userservice-code')">📋 Copy Code</button>
-                <pre><code id="userservice-code" class="language-java">package com.speechify;
+    </section>
 
-import java.time.LocalDate;
-import java.time.Period;
-import java.util.List;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
+    <!-- Education Section -->
+    <section id="education" class="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-grid">
+                <div class="education-card">
+                    <h3>University of Moratuwa</h3>
+                    <div class="degree">Bachelor of Science in Engineering (Honors) in Electrical Engineering</div>
+                    <div class="period">Mar 2021 – June 2025 | Sri Lanka</div>
+                    <p><strong>Minor:</strong> Mathematics</p>
+                    <p><strong>GPA:</strong> 3.6/4</p>
+                </div>
+                <div class="education-card">
+                    <h3>Kokuvil Hindu College</h3>
+                    <div class="degree">High School (Secondary Education)</div>
+                    <div class="period">Jan 2011 – Aug 2019</div>
+                    <p><strong>GCE A/L:</strong> Mathematics, Physics, Chemistry - 3A's</p>
+                    <p><strong>Z-Score:</strong> 2.5731</p>
+                    <p><strong>All Island Rank:</strong> 146</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-public class UserService {
-    private final UserRepository userRepository;
-    private final ClientRepository clientRepository;
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="experience-timeline">
+                <div class="experience-item">
+                    <h3>Software Engineer Intern</h3>
+                    <div class="company">Jaseci Labs, Remote - Michigan, USA</div>
+                    <div class="period">Nov 2023 - June 2024</div>
+                    <ul>
+                        <li><strong>Compilers:</strong> Designed and implemented syntax and semantics for Jac, a Python-superset language; developed modular compiler plugins via Pluggy; implemented symbol tables, scope management, and type checking</li>
+                        <li><strong>Machine Learning:</strong> Engineered an end-to-end ML pipeline with MLOps best practices; automated data ingestion, preprocessing, training, and deployment using CI/CD with GitHub Actions</li>
+                        <li>Containerized services with Docker, integrated with AWS ECR, and deployed via AWS Lambda for serverless scalability</li>
+                    </ul>
+                </div>
+                <div class="experience-item">
+                    <h3>Software Developer</h3>
+                    <div class="company">TLA, UoM - Sri Lanka</div>
+                    <div class="period">Aug 2023 - June 2025</div>
+                    <ul>
+                        <li>Developed and maintained scalable applications using React, Spring Boot, and PostgreSQL, deployed on AWS (EC2, RDS, S3)</li>
+                        <li>Built secure RESTful APIs and integrated WebSockets for real-time notifications with JWT authentication and role-based access control</li>
+                        <li>Automated testing using JUnit 5 and Mockito, streamlined deployments via GitHub Actions CI/CD</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    public UserService(UserRepository userRepository, ClientRepository clientRepository) {
-        this.userRepository = userRepository;
-        this.clientRepository = clientRepository;
-    }
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Programming Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Bash</span>
+                        <span class="skill-tag">Jac</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-layer-group"></i> Frameworks</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Spring Boot</span>
+                        <span class="skill-tag">FastAPI</span>
+                        <span class="skill-tag">Express</span>
+                        <span class="skill-tag">Node.js</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-database"></i> Databases</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">ChromaDB</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-cloud"></i> DevOps & Cloud</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">Azure</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Kubernetes</span>
+                        <span class="skill-tag">GitHub Actions</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-robot"></i> AI/ML Frameworks</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">Scikit-learn</span>
+                        <span class="skill-tag">OpenCV</span>
+                        <span class="skill-tag">LangChain</span>
+                        <span class="skill-tag">crewAI</span>
+                        <span class="skill-tag">Pandas</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-microchip"></i> Edge AI</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Jetson Nano</span>
+                        <span class="skill-tag">STM32</span>
+                        <span class="skill-tag">RENODE</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    public UserService() {
-        this.userRepository = new UserRepository();
-        this.clientRepository = new ClientRepository();
-    }
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-card-header">
+                        <h3>HealthSync</h3>
+                        <div class="project-tech">Spring Boot, Kafka, gRPC, PostgreSQL, Docker, AWS CDK</div>
+                    </div>
+                    <div class="project-card-body">
+                        <p>Built a Spring Boot microservices architecture for a patient management platform enabling patient registration, billing automation, analytics, and secure authentication with event-driven workflows via Kafka.</p>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-card-header">
+                        <h3>Task Manager</h3>
+                        <div class="project-tech">React, TypeScript, Node.js, PostgreSQL, Prisma</div>
+                    </div>
+                    <div class="project-card-body">
+                        <p>Full-stack task management app with status and priority tracking, JWT authentication, task filtering, and responsive UI. Type-safe components deployed via Vercel.</p>
+                    </div>
+                </div>
 
-    public CompletableFuture&lt;Boolean&gt; addUser(String firstname, String surname, String email, 
-                                             LocalDate dateOfBirth, String clientId) {
-        // Validation
-        if (!validateInput(firstname, surname, email)) {
-            return CompletableFuture.completedFuture(false);
-        }
+                <div class="project-card">
+                    <div class="project-card-header">
+                        <h3>WebQuery</h3>
+                        <div class="project-tech">FastAPI, GPT-3.5, ChromaDB, JavaScript</div>
+                    </div>
+                    <div class="project-card-body">
+                        <p>RAG-powered Chrome extension enabling semantic web search and content interaction using OpenAI embeddings and vector databases for intelligent content processing.</p>
+                    </div>
+                </div>
 
-        // Age validation
-        if (!isAdult(dateOfBirth)) {
-            return CompletableFuture.completedFuture(false);
-        }
+                <div class="project-card">
+                    <div class="project-card-header">
+                        <h3>Food Ordering App</h3>
+                        <div class="project-tech">React, Node.js, MongoDB, Stripe</div>
+                    </div>
+                    <div class="project-card-body">
+                        <p>Responsive food ordering application with categorized menus, cart functionality, user authentication, Stripe payment integration, and comprehensive admin panel.</p>
+                    </div>
+                </div>
 
-        // Check if user with email already exists
-        return userRepository.getUserByEmail(email).thenCompose(existingUser -&gt; {
-            if (existingUser != null) {
-                return CompletableFuture.completedFuture(false);
-            }
+                <div class="project-card">
+                    <div class="project-card-header">
+                        <h3>Non-Intrusive Load Monitoring</h3>
+                        <div class="project-tech">PyTorch, Transformers, Time-Series</div>
+                    </div>
+                    <div class="project-card-body">
+                        <p>Transformer-based model for disaggregating and classifying electrical loads from overlapping signal patterns, improving energy analytics for smart buildings.</p>
+                    </div>
+                </div>
 
-            // Get client
-            return clientRepository.getById(clientId).thenCompose(client -&gt; {
-                if (client == null) {
-                    System.err.println("Client not found with ID: " + clientId);
-                    return CompletableFuture.completedFuture(false);
+                <div class="project-card">
+                    <div class="project-card-header">
+                        <h3>DravidaKavacham</h3>
+                        <div class="project-tech">XLM-RoBERTa, PyTorch, NLP</div>
+                    </div>
+                    <div class="project-card-body">
+                        <p>XLM-RoBERTa based model for detecting gender-based abusive language in Tamil and Malayalam social media content. Published as PyPI package.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section class="achievements">
+        <div class="container">
+            <h2 class="section-title">Achievements & Certifications</h2>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Research Publication</h3>
+                    <p>Published research on "Detecting Abusive Tamil and Malayalam Text Targeting Women" at ACL (Association for Computational Linguistics)</p>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>AWS Certified</h3>
+                    <p>AWS Certified Solutions Architect Associate</p>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>Scholarship Recipient</h3>
+                    <p>The Queen Elizabeth II Diamond Jubilee Scholarship Program - University of Moratuwa</p>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI Specialist</h3>
+                    <p>Multiple certifications in AI/ML including DataCamp AI Engineer Associate and H2O.ai LLMs Level 3</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="social-links">
+                <a href="https://github.com/Sivasuthan9" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/sivasuthan-sukumar" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:sivasuthansukumar@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="tel:+94750159605"><i class="fas fa-phone"></i></a>
+            </div>
+            <p>&copy; 2025 Sivasuthan Sukumar. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
-
-                // Create user with appropriate credit limit
-                User user = createUserWithCreditLimit(firstname, surname, email, dateOfBirth, client);
-                return userRepository.saveUser(user);
             });
         });
-    }
 
-    public CompletableFuture&lt;Boolean&gt; updateUser(User user) {
-        if (user == null) {
-            return CompletableFuture.completedFuture(false);
-        }
-        return userRepository.saveUser(user);
-    }
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 30px rgba(0,0,0,0.15)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            }
+        });
 
-    public CompletableFuture&lt;List&lt;User&gt;&gt; getAllUsers() {
-        return userRepository.getAllUsers();
-    }
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-    public CompletableFuture&lt;User&gt; getUserByEmail(String email) {
-        return userRepository.getUserByEmail(email);
-    }
-
-    public CompletableFuture&lt;User&gt; getUserById(String id) {
-        return userRepository.getUserById(id);
-    }
-
-    private boolean validateInput(String firstname, String surname, String email) {
-        return firstname != null &amp;&amp; !firstname.trim().isEmpty() &amp;&amp;
-               surname != null &amp;&amp; !surname.trim().isEmpty() &amp;&amp;
-               email != null &amp;&amp; !email.trim().isEmpty();
-    }
-
-    private boolean isAdult(LocalDate dateOfBirth) {
-        if (dateOfBirth == null) {
-            return false;
-        }
-        int age = Period.between(dateOfBirth, LocalDate.now()).getYears();
-        return age &gt;= 21;
-    }
-
-    private User createUserWithCreditLimit(String firstname, String surname, String email,
-                                         LocalDate dateOfBirth, Client client) {
-        User user = new User();
-        user.setId(UUID.randomUUID().toString());
-        user.setClient(client);
-        user.setDateOfBirth(dateOfBirth);
-        user.setEmail(email);
-        user.setFirstname(firstname);
-        user.setSurname(surname);
-
-        // Set credit limit based on client type
-        applyCreditLimitPolicy(user, client);
-        return user;
-    }
-
-    private void applyCreditLimitPolicy(User user, Client client) {
-        String clientName = client.getName();
-        if ("VeryImportantClient".equals(clientName)) {
-            user.setHasCreditLimit(false);
-        } else if ("ImportantClient".equals(clientName)) {
-            user.setHasCreditLimit(true);
-            user.setCreditLimit(20000); // Double credit limit
-        } else {
-            user.setHasCreditLimit(true);
-            user.setCreditLimit(10000);
-        }
-    }
-}</code></pre>
-            </div>
-        </div>
-        
-        <!-- ApplicationConfig Tab -->
-        <div class="tab-content" id="appconfig">
-            <div class="file-info">📄 ApplicationConfig.java - Dependency injection and configuration</div>
-            <div class="code-container">
-                <button class="copy-button" onclick="copyCode('appconfig-code')">📋 Copy Code</button>
-                <pre><code id="appconfig-code" class="language-java">package com.speechify;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-public class ApplicationConfig {
-    private static final int CACHE_MAX_ITEMS = 100;
-    
-    public static UserService getUserService() {
-        ObjectMapper objectMapper = new ObjectMapper();
-        LRUCache&lt;String, User&gt; userCache = new LRUCache&lt;&gt;(new CacheLimits(CACHE_MAX_ITEMS));
-        LRUCache&lt;String, Client&gt; clientCache = new LRUCache&lt;&gt;(new CacheLimits(CACHE_MAX_ITEMS));
-        
-        UserRepository userRepository = new UserRepository(objectMapper, userCache);
-        ClientRepository clientRepository = new ClientRepository(objectMapper, clientCache);
-        
-        return new UserService(userRepository, clientRepository);
-    }
-    
-    public static UserService getUserServiceWithDefaultCache() {
-        return new UserService(new UserRepository(), new ClientRepository());
-    }
-}</code></pre>
-            </div>
-        </div>
-        
-        <!-- User Tab -->
-        <div class="tab-content" id="user">
-            <div class="file-info">📄 User.java - User entity model with complete getters and setters</div>
-            <div class="code-container">
-                <button class="copy-button" onclick="copyCode('user-code')">📋 Copy Code</button>
-                <pre><code id="user-code" class="language-java">package com.speechify;
-
-import java.time.LocalDate;
-
-public class User {
-    private String id;
-    private Client client;
-    private LocalDate dateOfBirth;
-    private String email;
-    private String firstname;
-    private String surname;
-    private boolean hasCreditLimit;
-    private double creditLimit;
-
-    public User() {}
-
-    public User(String id, Client client, LocalDate dateOfBirth, String email, 
-                String firstname, String surname, boolean hasCreditLimit, double creditLimit) {
-        this.id = id;
-        this.client = client;
-        this.dateOfBirth = dateOfBirth;
-        this.email = email;
-        this.firstname = firstname;
-        this.surname = surname;
-        this.hasCreditLimit = hasCreditLimit;
-        this.creditLimit = creditLimit;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
-    }
-
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public boolean isHasCreditLimit() {
-        return hasCreditLimit;
-    }
-
-    public void setHasCreditLimit(boolean hasCreditLimit) {
-        this.hasCreditLimit = hasCreditLimit;
-    }
-
-    public double getCreditLimit() {
-        return creditLimit;
-    }
-
-    public void setCreditLimit(double creditLimit) {
-        this.creditLimit = creditLimit;
-    }
-}</code></pre>
-            </div>
-        </div>
-        
-        <div class="info-section">
-            <h2>System Architecture Overview</h2>
-            <div class="info-grid">
-                <div class="info-card">
-                    <h3>🏗️ Service Layer</h3>
-                    <p>UserService provides business logic for user management including validation, age verification (21+), and credit limit policies based on client types.</p>
-                </div>
-                <div class="info-card">
-                    <h3>⚙️ Configuration</h3>
-                    <p>ApplicationConfig implements dependency injection pattern, providing configured instances with proper caching and object mapping.</p>
-                </div>
-                <div class="info-card">
-                    <h3>👤 Data Model</h3>
-                    <p>User entity with complete POJO structure including personal information, client association, and financial limits.</p>
-                </div>
-                <div class="info-card">
-                    <h3>💰 Credit Policies</h3>
-                    <p>Dynamic credit limit assignment: VeryImportantClient (unlimited), ImportantClient (20k), others (10k default).</p>
-                </div>
-                <div class="info-card">
-                    <h3>🔄 Async Operations</h3>
-                    <p>All operations use CompletableFuture for non-blocking execution and better performance in concurrent environments.</p>
-                </div>
-                <div class="info-card">
-                    <h3>✅ Input Validation</h3>
-                    <p>Comprehensive validation including null checks, empty string validation, age verification, and duplicate email prevention.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
-    <script>
-        function switchTab(tabName) {
-            // Hide all tab contents
-            const tabContents = document.querySelectorAll('.tab-content');
-            tabContents.forEach(content => content.classList.remove('active'));
-            
-            // Remove active class from all buttons
-            const tabButtons = document.querySelectorAll('.tab-button');
-            tabButtons.forEach(button => button.classList.remove('active'));
-            
-            // Show selected tab content
-            document.getElementById(tabName).classList.add('active');
-            
-            // Add active class to clicked button
-            event.target.classList.add('active');
-        }
-        
-        function copyCode(codeId) {
-            const codeElement = document.getElementById(codeId);
-            const text = codeElement.textContent;
-            
-            navigator.clipboard.writeText(text).then(() => {
-                const button = event.target;
-                const originalText = button.textContent;
-                button.textContent = '✅ Copied!';
-                button.style.background = '#48bb78';
-                
-                setTimeout(() => {
-                    button.textContent = originalText;
-                    button.style.background = '#4299e1';
-                }, 2000);
-            }).catch(err => {
-                console.error('Failed to copy text: ', err);
-                // Fallback for older browsers
-                const textArea = document.createElement('textarea');
-                textArea.value = text;
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textArea);
-                
-                const button = event.target;
-                const originalText = button.textContent;
-                button.textContent = '✅ Copied!';
-                button.style.background = '#48bb78';
-                
-                setTimeout(() => {
-                    button.textContent = originalText;
-                    button.style.background = '#4299e1';
-                }, 2000);
-            });
-        }
-    </script>
-</body>
-</html>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)
