@@ -330,6 +330,11 @@ span.highlight {
   color: #1772d0;
 }
 
+.project-page figure.hf-card {
+  margin: 18px auto 0;
+  max-width: 400px;
+}
+
 .news-quote {
   background: #f4f7fb;
   border-left: 4px solid #1772d0;
