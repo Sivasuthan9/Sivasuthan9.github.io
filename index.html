@@ -1,0 +1,295 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="description" content="Sivasuthan Sukumar, MSc researcher at the University of Moratuwa working on vision-language models.">
+	<meta name="author" content="Sivasuthan Sukumar">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta property="og:title" content="Sivasuthan Sukumar">
+	<meta property="og:description" content="Research on vision-language models: calibration, interpretability and fast decision models for images.">
+	<meta property="og:image" content="https://sivasuthan9.github.io/images/fovea/hf_card.png">
+	<meta property="og:type" content="website">
+	<meta name="twitter:card" content="summary_large_image">
+
+	<title>Sivasuthan Sukumar</title>
+
+	<link rel="stylesheet" type="text/css" href="stylesheet.css">
+	<link rel="icon" type="image/svg+xml" href="images/icon.svg">
+</head>
+
+
+<body>
+  <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+    <tr style="padding:0px">
+      <td style="padding:0px">
+        <table class="stack-sm" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+          <tr style="padding:0px">
+            <td style="padding:2.5%;width:63%;vertical-align:middle">
+              <p style="text-align:center">
+                <name>Sivasuthan Sukumar</name>
+              </p>
+              <p>
+                I am a research-based MSc student in Computer Science and Engineering at the
+                <a href="https://uom.lk/">University of Moratuwa</a>, Sri Lanka, where I also work as a Research Assistant
+                and a Visiting Instructor. My research is on vision-language models (VLMs): how to make their confidence
+                trustworthy at test time, and how they combine what they see with what they read when they reason.
+              </p>
+              <p>
+                Recently I released <a href="fovea.html">Fovea-4B</a>, an open 4B-parameter model that answers typed
+                questions about images with a probability for every allowed answer. Before moving to research, I was a
+                Software Engineer Intern at <a href="https://www.jaseci.org/">Jaseci Labs</a>, where I worked on the
+                compiler for the Jac language and on MLOps pipelines. I completed my BSc (Hons) in Electrical Engineering,
+                with a minor in Mathematics, at the University of Moratuwa.
+              </p>
+              <p style="text-align:center">
+                <a href="mailto:sivasuthansukumar@gmail.com">Email</a> &nbsp;/&nbsp;
+                <a href="https://scholar.google.com/citations?user=fQlJX-gAAAAJ&hl=en">Google Scholar</a> &nbsp;/&nbsp;
+                <a href="https://github.com/Sivasuthan9">GitHub</a> &nbsp;/&nbsp;
+                <a href="https://huggingface.co/Sivasuthan">Hugging Face</a> &nbsp;/&nbsp;
+                <a href="https://www.linkedin.com/in/sivasuthan-sukumar">LinkedIn</a>
+              </p>
+            </td>
+            <td style="padding:2.5%;width:40%;max-width:40%">
+              <!-- Add your photo as images/profile.jpg; until then the initials are shown. -->
+              <div class="image-container">
+                <img src="images/profile.jpg" alt="Sivasuthan Sukumar" onerror="this.onerror=null;this.src='images/profile.svg'">
+              </div>
+            </td>
+          </tr>
+        </tbody></table>
+
+
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+          <tr>
+            <td style="padding:20px;width:100%;vertical-align:middle">
+              <heading>News</heading>
+              <ul class="news-list">
+                <li><span class="news-date">Oct 2026</span><span>Fovea-4B was covered by <a href="https://ainews.leverageai.com.au/case/fovea-open-vision-decision-model">AI News Radar</a>.</span></li>
+                <li><span class="news-date">Oct 2026</span><span>Fovea-4B is listed in the <a href="https://decisionmodels.ai/models/fovea">DecisionModels.ai</a> model registry.</span></li>
+                <li><span class="news-date">Oct 2026</span><span><a href="https://huggingface.co/mradermacher">mradermacher</a> released <a href="https://huggingface.co/mradermacher/fovea-4b-GGUF">GGUF quantised versions</a> of Fovea-4B.</span></li>
+                <li><span class="news-date">Oct 2026</span><span>Released <a href="fovea.html">Fovea-4B</a>: weights, code and the <a href="https://pypi.org/project/fovea-sdk/">fovea-sdk</a> Python package.</span></li>
+                <li><span class="news-date">Oct 2026</span><span><a href="https://aclanthology.org/2026.wmt-main.41/">Obligatory Slots</a> appeared at the Eleventh Conference on Machine Translation (WMT 2026).</span></li>
+                <li><span class="news-date">Oct 2026</span><span>Our paper <a href="https://neurips.cc/virtual/2026/loc/sydney/165025">What Entropy-Based View Selection Cannot See</a> is at the NeurIPS 2026 workshop VLM4RWD in Sydney.</span></li>
+                <li><span class="news-date">Mar 2026</span><span>Started a research-based MSc in Computer Science and Engineering at the University of Moratuwa.</span></li>
+                <li><span class="news-date">Jan 2026</span><span>Joined the University of Moratuwa as a Research Assistant and Visiting Instructor.</span></li>
+              </ul>
+            </td>
+          </tr>
+        </tbody></table>
+
+
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+          <tr>
+            <td style="padding:20px;width:100%;vertical-align:middle">
+              <heading>Research</heading>
+              <p>
+                My research interests are in vision-language models, with a focus on making them reliable. At present I work on two questions.
+              </p>
+              <div class="writing-list">
+                <div class="writing-item">
+                  <strong>Test-time adaptation and calibration</strong>
+                  <p>I developed ETF-TPT, a test-time prompt tuning method for zero-shot VLMs that reaches lower calibration error than existing state-of-the-art calibration techniques.
+                    In <a href="#entropy">Seeing Beyond Entropy</a>, I show that entropy-based view selection, the core of a family of test-time adaptation methods, is no better than random on exactly the images where a better choice would help.</p>
+                </div>
+                <div class="writing-item">
+                  <strong>Interpretability</strong>
+                  <p>I study how multimodal models combine vision and language when they reason, with the aim of more faithful, transparent and trustworthy explanations.</p>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody></table>
+
+
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+          <tr>
+            <td style="padding:20px;width:100%;vertical-align:middle">
+              <heading>Projects</heading>
+            </td>
+          </tr>
+        </tbody></table>
+        <!-- To add a project, copy one <tr> block below and give it its own page. -->
+        <table class="stack-sm" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+
+<tr>
+	<td style="padding:20px;width:25%;vertical-align:middle">
+		<div class="one">
+			<div class="two">
+				<a href="fovea.html"><img src="images/fovea/thumbnail.png" width="160" alt="Fovea-4B on Hugging Face"></a>
+			</div>
+		</div>
+	</td>
+	<td style="padding:20px;width:75%;vertical-align:middle">
+		<a href="fovea.html">
+			<papertitle>Fovea-4B: A Fast, Calibrated Decision Model for Images</papertitle></a><br>
+		<strong>Sivasuthan Sukumar</strong><br>
+		<em>Open-weights model release</em>, October 2026 <br>
+		<a href="fovea.html">project page</a>/
+		<a href="https://github.com/Sivasuthan9/fovea">code</a>/
+		<a href="https://huggingface.co/Sivasuthan/fovea-4b">model</a>/
+		<a href="https://huggingface.co/mradermacher/fovea-4b-GGUF">GGUF</a>/
+		<a href="https://pypi.org/project/fovea-sdk/">PyPI</a>/
+		<a href="https://ainews.leverageai.com.au/case/fovea-open-vision-decision-model">news</a>
+		<p></p>
+		<p>Given an image, a JSON state and a typed question, Fovea-4B returns a probability for every allowed answer in a single forward pass. It is served over TypeSafe's System One API and runs on one GPU with 16 GB of memory.</p>
+		<p class="stat-note"><strong data-hf="total">781</strong> downloads on Hugging Face
+			(<span data-hf="Sivasuthan/fovea-4b">51</span> model, <span data-hf="mradermacher/fovea-4b-GGUF">730</span> GGUF; <span data-hf="asof">30 Oct 2026</span>)</p>
+	</td>
+</tr>
+
+
+<tr id="entropy">
+	<td style="padding:20px;width:25%;vertical-align:middle">
+		<div class="one">
+			<div class="two">
+				<a href="https://neurips.cc/virtual/2026/loc/sydney/165025"><img src="images/entropy/thumbnail.png" width="160" alt="Seeing Beyond Entropy, NeurIPS 2026 Workshop"></a>
+			</div>
+		</div>
+	</td>
+	<td style="padding:20px;width:75%;vertical-align:middle">
+		<a href="https://neurips.cc/virtual/2026/loc/sydney/165025">
+			<papertitle>Seeing Beyond Entropy: Exposing Hidden Failures in Vision-Language Models</papertitle></a><br>
+		<strong>Sivasuthan Sukumar</strong>,
+		Thayasivam Uthayasanker<br>
+		<em>NeurIPS 2026 Workshop on Grounded and Faithful Vision-Language Models for Real-World Deployment (VLM4RWD)</em>, 2026 <br>
+		<a href="https://neurips.cc/virtual/2026/loc/sydney/165025">paper</a>
+		<details class="abstract">
+			<summary>abstract</summary>
+			<p>Vision-language models such as CLIP achieve strong zero-shot classification performance, but their accuracy can degrade under distribution shifts encountered in real-world deployment. A widely used remedy creates many randomly cropped and flipped copies of the single test image, called views, and combines their predictions. Because some views miss the object entirely, such a method must decide which views to trust. Methods in this family answer the same way: they measure how concentrated each view’s predicted class distribution is, a quantity called prediction entropy, and keep the views the model is most certain about. Subsequent research has refined this scoring function repeatedly, while leaving unexamined the information the score is computed from, namely the model’s own output. We examine that choice. Holding each stage of the pipeline fixed in turn, we first show that selection rather than the gradient update produces almost all of the accuracy these methods gain. We then ask whether the entropy score can identify a useful view in the cases where a better choice would help: images the method gets wrong although at least one view already predicts the correct class. On exactly those cases the score is no better than picking views at random. This holds for two different image encoders, under a control that rules out the obvious statistical artefact. An exact analysis of the entropy objective explains why, and a matched comparison isolates the missing ingredient: the score reports how certain a view is, never which class it favours. The pipeline nevertheless holds an unused signal. The augmentation procedure sampled each crop, so it already knows how much of the image every view contains, without any label. Ranking views by that quantity improves accuracy on 14 of 15 benchmark datasets, and a measurement taken before the method runs predicts which datasets benefit.</p>
+		</details>
+		<p>Test-time adaptation methods for CLIP keep the augmented views of a test image with the lowest prediction entropy. On the images where a better choice would help, this score is no better than random. Ranking views by how much of the image each crop covers, a quantity the augmentation already knows, improves accuracy on 14 of 15 datasets.</p>
+	</td>
+</tr>
+
+        </tbody></table>
+
+
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+          <tr>
+            <td style="padding:20px;width:100%;vertical-align:middle">
+              <heading>Publications</heading>
+              <p>The full list is on <a href="https://scholar.google.com/citations?user=fQlJX-gAAAAJ&hl=en">Google Scholar</a>.</p>
+
+              <p class="pub">
+                <a href="https://neurips.cc/virtual/2026/loc/sydney/165025"><papertitle>What Entropy-Based View Selection Cannot See: An Audit of Test-Time Adaptation for Vision-Language Models</papertitle></a><br>
+                <strong>Sivasuthan Sukumar</strong>, Thayasivam Uthayasanker<br>
+                <em>NeurIPS 2026 Workshop on Grounded and Faithful Vision-Language Models for Real-World Deployment (VLM4RWD)</em>, 2026<br>
+                <a href="https://neurips.cc/virtual/2026/loc/sydney/165025">paper</a>
+              </p>
+
+              <p class="pub">
+                <a href="https://aclanthology.org/2026.wmt-main.41/"><papertitle>Obligatory Slots: Under Reference-Free Evaluation, Dropping a Distinction the Source Never Made Is Free</papertitle></a><br>
+                Luxshan Thavarasa, Jubeerathan Thevakumar, <strong>Sivasuthan Sukumar</strong><br>
+                <em>Proceedings of the Eleventh Conference on Machine Translation (WMT)</em>, 2026<br>
+                <a href="https://aclanthology.org/2026.wmt-main.41/">paper</a>/
+                <a href="https://aclanthology.org/2026.wmt-main.41.pdf">pdf</a>
+              </p>
+
+              <p class="pub">
+                <a href="https://arxiv.org/abs/2608.04183"><papertitle>Test, then Route: How Language Models Execute In-Context Conditional Rules Across Models and Languages</papertitle></a><br>
+                Luxshan Thavarasa, <strong>Sivasuthan Sukumar</strong><br>
+                <em>arXiv preprint arXiv:2608.04183</em>, 2026<br>
+                <a href="https://arxiv.org/abs/2608.04183">arxiv</a>/
+                <a href="https://arxiv.org/pdf/2608.04183">pdf</a>
+              </p>
+
+              <p class="pub">
+                <a href="https://aclanthology.org/2025.dravidianlangtech-1.1/"><papertitle>Incepto@DravidianLangTech 2025: Detecting Abusive Tamil and Malayalam Text Targeting Women on YouTube</papertitle></a><br>
+                Luxshan Thavarasa, <strong>Sivasuthan Sukumar</strong>, Jubeerathan Thevakumar<br>
+                <em>Fifth Workshop on Speech, Vision, and Language Technologies for Dravidian Languages (DravidianLangTech)</em>, 2025<br>
+                <a href="https://aclanthology.org/2025.dravidianlangtech-1.1/">paper</a>/
+                <a href="https://aclanthology.org/2025.dravidianlangtech-1.1.pdf">pdf</a>
+              </p>
+
+              <p class="pub">
+                <a href="https://arxiv.org/abs/2510.24081"><papertitle>Global PIQA: Evaluating Commonsense Reasoning Across 100+ Languages and Cultures</papertitle></a><br>
+                Tyler A. Chang, Catherine Arnett, and others, including <strong>Sivasuthan Sukumar</strong> (more than 350 authors)<br>
+                <em>arXiv preprint arXiv:2510.24081</em>, 2025<br>
+                <a href="https://arxiv.org/abs/2510.24081">arxiv</a>/
+                <a href="https://arxiv.org/pdf/2510.24081">pdf</a>
+              </p>
+            </td>
+          </tr>
+        </tbody></table>
+
+
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+          <tr>
+            <td style="padding:20px;width:100%;vertical-align:middle">
+              <heading>Experience</heading>
+              <div class="writing-list">
+                <div class="writing-item">
+                  <strong>Research Assistant</strong><span>Jan 2026 – present</span>
+                  <p>University of Moratuwa, Sri Lanka</p>
+                  <ul>
+                    <li>Developed ETF-TPT, a test-time prompt tuning method that reaches lower calibration error than existing state-of-the-art calibration techniques for zero-shot VLMs.</li>
+                    <li>Working on the interpretability of VLMs: how multimodal models reason across vision and language, to improve explanation fidelity, transparency and trust.</li>
+                  </ul>
+                </div>
+                <div class="writing-item">
+                  <strong>Visiting Instructor</strong><span>Jan 2026 – present</span>
+                  <p>Department of Computer Science and Engineering, University of Moratuwa, Sri Lanka</p>
+                  <ul>
+                    <li>Lectures, tutorials and assessments for BSc Engineering courses: CS4681 Advanced Machine Learning, CS3111 Introduction to Machine Learning, CS2023 Data Structures and Algorithms, and CS2843 Computer Systems.</li>
+                  </ul>
+                </div>
+                <div class="writing-item">
+                  <strong>Software Engineer Intern</strong><span>Nov 2023 – Jun 2024</span>
+                  <p><a href="https://www.jaseci.org/">Jaseci Labs</a>, Michigan, USA (remote)</p>
+                  <ul>
+                    <li>Compilers: designed and implemented syntax and semantics for Jac, a superset of Python. Wrote the grammar in Lark (EBNF), built modular compiler plugins with Pluggy, and implemented symbol tables, scope resolution, type checking, AST transformations, static analysis and error recovery. Improved performance through IR-level transformations, added CLI commands, and tested with unit, integration and regression tests in PyTest.</li>
+                    <li>Machine learning: built an end-to-end ML pipeline following MLOps practice, with automated data ingestion, preprocessing, training and deployment, CI/CD in GitHub Actions, and services in Docker containers.</li>
+                  </ul>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody></table>
+
+
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+          <tr>
+            <td style="padding:20px;width:100%;vertical-align:middle">
+              <heading>Education</heading>
+              <div class="writing-list">
+                <div class="writing-item">
+                  <strong>MSc in Computer Science and Engineering (research)</strong><span>Mar 2026 – Mar 2027</span>
+                  <p>University of Moratuwa, Sri Lanka. Research in data science and AI. GPA 4.0/4.0.</p>
+                </div>
+                <div class="writing-item">
+                  <strong>BSc (Hons) in Electrical Engineering</strong><span>Mar 2021 – Jun 2025</span>
+                  <p>University of Moratuwa, Sri Lanka. Minor in Mathematics. GPA 3.31/4.0.</p>
+                </div>
+                <div class="writing-item">
+                  <strong>GCE Advanced Level</strong><span>Aug 2019</span>
+                  <p>J/Kokuvil Hindu College, Sri Lanka. Mathematics, Physics and Chemistry, 3 A grades. Z-score 2.5731: district rank 14 and all-island rank 146 among more than 35,000 candidates.</p>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody></table>
+
+
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+          <tbody>
+            <tr>
+              <td style="padding:0px">
+                <br>
+                <p style="text-align:right;font-size:small;">
+                  Website template from Jathushan Rajasegaran <a href="https://brjathu.github.io/">here</a>,
+                  whose source is from Jon Barron <a href="https://jonbarron.info/">here</a>
+                  <br>
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </td>
+    </tr>
+  </table>
+  <script src="downloads.js"></script>
+</body>
+
+</html>
