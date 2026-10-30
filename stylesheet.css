@@ -1,0 +1,420 @@
+/* Base styles from Jathushan Rajasegaran's site (https://brjathu.github.io/), whose source is Jon Barron's (https://jonbarron.info/). */
+
+/* latin-ext */
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Lato Italic'), local('Lato-Italic'), url(https://fonts.gstatic.com/s/lato/v15/S6u8w4BMUTPHjxsAUi-qNiXg7eU0.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Lato Italic'), local('Lato-Italic'), url(https://fonts.gstatic.com/s/lato/v15/S6u8w4BMUTPHjxsAXC-qNiXg7Q.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url(https://fonts.gstatic.com/s/lato/v15/S6u_w4BMUTPHjxsI5wq_FQftx9897sxZ.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url(https://fonts.gstatic.com/s/lato/v15/S6u_w4BMUTPHjxsI5wq_Gwftx9897g.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v15/S6uyw4BMUTPHjxAwXiWtFCfQ7A.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v15/S6uyw4BMUTPHjx4wXiWtFCc.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Lato Bold'), local('Lato-Bold'), url(https://fonts.gstatic.com/s/lato/v15/S6u9w4BMUTPHh6UVSwaPGQ3q5d0N7w.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Lato Bold'), local('Lato-Bold'), url(https://fonts.gstatic.com/s/lato/v15/S6u9w4BMUTPHh6UVSwiPGQ3q5d0.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+a {
+  color: #1772d0;
+  text-decoration: none;
+}
+
+a:focus,
+a:hover {
+  color: #f09228;
+  text-decoration: none;
+}
+
+body,
+td,
+th,
+tr,
+p,
+a {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 14px
+}
+
+strong {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+heading {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 22px;
+}
+
+papertitle {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 700
+}
+
+name {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 32px;
+}
+
+.one {
+  width: 160px;
+  height: 160px;
+  position: relative;
+}
+
+.two {
+  width: 160px;
+  height: 160px;
+  position: absolute;
+  transition: opacity .2s ease-in-out;
+  -moz-transition: opacity .2s ease-in-out;
+  -webkit-transition: opacity .2s ease-in-out;
+}
+
+span.highlight {
+  background-color: #ffffd0;
+}
+
+/* Additions for this site */
+
+.image-container {
+  width: 200px;
+  height: 200px;
+  border-radius: 75%;
+  background-color: white;
+  overflow: hidden;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.news-list {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+}
+
+.news-list li {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 64px 1fr;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 2px 0;
+}
+
+.news-date {
+  color: #8a8176;
+  font-size: 13px;
+}
+
+.writing-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.writing-item {
+  border-left: 2px solid #e8e2d8;
+  padding: 4px 0 5px 11px;
+}
+
+.writing-item span {
+  color: #8a8176;
+  font-size: 12px;
+  margin-left: 8px;
+  white-space: nowrap;
+}
+
+.writing-item p,
+.writing-item li {
+  color: #5c6470;
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.writing-item ul {
+  margin: 4px 0 0;
+  padding-left: 18px;
+}
+
+.stat-note {
+  color: #5c6470;
+  font-size: 13px;
+}
+
+/* Project pages */
+
+.project-page {
+  box-sizing: border-box;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 20px 20px 40px;
+}
+
+.project-nav a {
+  font-size: 14px;
+}
+
+.project-hero {
+  text-align: center;
+}
+
+.project-hero img {
+  height: 120px;
+  margin-top: 10px;
+  width: 120px;
+}
+
+.project-title {
+  color: #17202a;
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 40px;
+  margin: 8px 0 4px;
+}
+
+.project-subtitle {
+  color: #5c6470;
+  font-size: 18px;
+  margin: 0 0 8px;
+}
+
+.project-meta {
+  color: #8a8176;
+  font-size: 13px;
+}
+
+.project-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin: 16px 0 8px;
+}
+
+.project-buttons a {
+  background: #eef1f4;
+  border-radius: 8px;
+  color: #17202a;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 7px 14px;
+}
+
+.project-buttons a:hover {
+  background: #dfe5eb;
+  color: #f09228;
+}
+
+.project-page h2 {
+  color: #17202a;
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  margin: 34px 0 10px;
+}
+
+.project-page p,
+.project-page li {
+  color: #252b33;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.stats {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.stat {
+  background: #fbfaf7;
+  border: 1px solid #e4dbcf;
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+.stat-value {
+  color: #17202a;
+  display: block;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.stat-label,
+.stat-label a {
+  color: #5c6470;
+  font-size: 13px;
+}
+
+.stat-label a {
+  color: #1772d0;
+}
+
+.project-page figure {
+  margin: 14px 0 0;
+}
+
+.project-page figure img {
+  border: 1px solid #e4dbcf;
+  border-radius: 8px;
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+.project-page figcaption,
+.project-page figcaption a {
+  color: #676057;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-top: 8px;
+}
+
+.project-page figcaption a {
+  color: #1772d0;
+}
+
+.news-quote {
+  background: #f4f7fb;
+  border-left: 4px solid #1772d0;
+  margin: 12px 0;
+  padding: 10px 16px;
+}
+
+.news-quote p {
+  margin: 6px 0;
+}
+
+.code-block {
+  background: #f2f2f2;
+  border-radius: 8px;
+  color: #243342;
+  font-family: Menlo, Monaco, Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  overflow-x: auto;
+  padding: 12px 14px;
+}
+
+p.pub {
+  margin: 0 0 16px;
+}
+
+details.abstract {
+  display: inline;
+}
+
+details.abstract summary {
+  color: #1772d0;
+  cursor: pointer;
+  display: inline;
+  font-size: 14px;
+  list-style: none;
+}
+
+details.abstract summary::-webkit-details-marker {
+  display: none;
+}
+
+details.abstract summary::before {
+  content: "/ ";
+  color: #000000;
+}
+
+details.abstract summary:hover {
+  color: #f09228;
+}
+
+details.abstract p {
+  background: #f7f7f5;
+  border-left: 2px solid #e8e2d8;
+  color: #3a4048;
+  font-size: 13px;
+  line-height: 1.55;
+  margin: 8px 0 0;
+  padding: 8px 12px;
+}
+
+@media (max-width: 640px) {
+  table.stack-sm,
+  table.stack-sm tbody,
+  table.stack-sm tr,
+  table.stack-sm td {
+    box-sizing: border-box;
+    display: block;
+    width: 100% !important;
+  }
+
+  table.stack-sm td:first-child {
+    padding-bottom: 0 !important;
+  }
+
+  .image-container {
+    margin: 0 auto;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .project-title {
+    font-size: 32px;
+  }
+}
+
