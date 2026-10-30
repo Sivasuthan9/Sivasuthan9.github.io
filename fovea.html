@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="description" content="Fovea-4B: a fast, calibrated decision model for images, by Sivasuthan Sukumar.">
+	<meta name="author" content="Sivasuthan Sukumar">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta property="og:title" content="Fovea-4B: a fast, calibrated decision model for images">
+	<meta property="og:description" content="An open 4B-parameter model that returns a probability for every allowed answer to a typed question about an image, in one forward pass.">
+	<meta property="og:image" content="https://sivasuthan9.github.io/images/fovea/hf_card.png">
+	<meta property="og:type" content="website">
+	<meta name="twitter:card" content="summary_large_image">
+
+	<title>Fovea-4B</title>
+
+	<link rel="stylesheet" type="text/css" href="stylesheet.css">
+	<link rel="icon" type="image/svg+xml" href="images/icon.svg">
+</head>
+
+
+<body>
+  <div class="project-page">
+
+    <p class="project-nav"><a href="index.html">&larr; Sivasuthan Sukumar</a></p>
+
+    <div class="project-hero">
+      <h1 class="project-title">Fovea-4B</h1>
+      <p class="project-subtitle">A fast, calibrated decision model for images</p>
+      <p><a href="index.html">Sivasuthan Sukumar</a></p>
+      <p class="project-meta">Released 24 October 2026 &middot; 4B parameters &middot; Apache-2.0</p>
+      <div class="project-buttons">
+        <a href="https://github.com/Sivasuthan9/fovea">Code</a>
+        <a href="https://huggingface.co/Sivasuthan/fovea-4b">Model</a>
+        <a href="https://huggingface.co/mradermacher/fovea-4b-GGUF">GGUF</a>
+        <a href="https://pypi.org/project/fovea-sdk/">PyPI</a>
+        <a href="https://decisionmodels.ai/models/fovea">DecisionModels.ai</a>
+        <a href="https://ainews.leverageai.com.au/case/fovea-open-vision-decision-model">News</a>
+      </div>
+    </div>
+
+    <figure>
+      <a href="https://huggingface.co/Sivasuthan/fovea-4b"><img src="images/fovea/hf_card.png" alt="Sivasuthan/fovea-4b on Hugging Face"></a>
+    </figure>
+
+
+    <h2>Overview</h2>
+    <p>
+      Fovea-4B is a fast decision model for images. It takes an image (a photo, document, receipt, chart or
+      screenshot), a JSON state and a typed question, and returns a probability for every allowed answer in a single
+      forward pass. It supports three question types: yes/no, a choice among named options, and a score on ordered
+      levels. Every answer covers exactly the requested labels, and the probabilities sum to 1.
+    </p>
+    <p>
+      The model has 4B parameters and is built on Qwen3.5-4B. It is served over TypeSafe's System One API, so any
+      client of that API can call it unchanged, and one GPU with 16 GB of memory is enough to run it. The weights are
+      released under the Apache-2.0 licence.
+    </p>
+
+
+    <h2>Downloads</h2>
+    <div class="stats">
+      <div class="stat">
+        <span class="stat-value" data-hf="Sivasuthan/fovea-4b">51</span>
+        <span class="stat-label"><a href="https://huggingface.co/Sivasuthan/fovea-4b">Sivasuthan/fovea-4b</a><br>original weights</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value" data-hf="mradermacher/fovea-4b-GGUF">730</span>
+        <span class="stat-label"><a href="https://huggingface.co/mradermacher/fovea-4b-GGUF">mradermacher/fovea-4b-GGUF</a><br>quantised versions</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value" data-hf="total">781</span>
+        <span class="stat-label">total downloads<br>on Hugging Face</span>
+      </div>
+    </div>
+    <p class="stat-note">All-time downloads reported by Hugging Face (<span data-hf="asof">recorded 30 Oct 2026</span>).</p>
+
+
+    <h2>Results</h2>
+    <p>
+      I compared Fovea-4B with three open decision models: Imajev-4B and H2O-Lightning-4B image, the two strongest
+      open 4B models on the ImageJevBench v0.3 leaderboard by Intelligence, and the larger Jev-Vision (8B). All four
+      answer the same 2,360 held-out multiple-choice questions from public benchmarks. Fovea-4B scores 80.6 overall,
+      against 79.9, 79.4 and 75.7, and has the lowest expected calibration error of the four (0.035).
+    </p>
+    <figure>
+      <img src="images/fovea/comparison.png" alt="Bar charts comparing Fovea-4B, Imajev-4B, H2O-Lightning-4B image and Jev-Vision overall and by category">
+      <figcaption>
+        Intelligence = 100 &times; (accuracy &minus; chance) / (1 &minus; chance). This is my own held-out evaluation,
+        not the ImageJevBench leaderboard: it contains only multiple-choice questions, and leaderboard scores are lower
+        and can rank models differently. Details are in the <a href="https://github.com/Sivasuthan9/fovea">README</a>.
+      </figcaption>
+    </figure>
+
+
+    <h2>Listed on DecisionModels.ai</h2>
+    <p>
+      <a href="https://decisionmodels.ai/">DecisionModels.ai</a>, an independent registry of decision models, lists
+      Fovea-4B as an open-weights release of 24 October 2026 (<a href="https://decisionmodels.ai/models/fovea">model page</a>).
+      Fovea-4B is marked in red on its release timeline below.
+    </p>
+    <figure>
+      <img src="images/fovea/decisionmodels_timeline.png" alt="DecisionModels.ai release timeline, September to October 2026, with Fovea-4B marked">
+      <figcaption>Source: <a href="https://decisionmodels.ai/">decisionmodels.ai</a></figcaption>
+    </figure>
+
+
+    <h2>In the news</h2>
+    <p>
+      <a href="https://ainews.leverageai.com.au/case/fovea-open-vision-decision-model">AI News Radar</a> covered the
+      release under the title "Sivasuthan releases self-hostable Fovea-4B image decision model".
+    </p>
+    <div class="news-quote">
+      <p>"Fovea-4B makes a specialized vision workflow easier to deploy: instead of generating prose, it scores options an application supplies and returns a probability distribution."</p>
+      <p class="stat-note">AI News Radar, <a href="https://ainews.leverageai.com.au/case/fovea-open-vision-decision-model">ainews.leverageai.com.au</a></p>
+    </div>
+
+
+    <h2>Quantised versions</h2>
+    <p>
+      <a href="https://huggingface.co/mradermacher">mradermacher</a> released static GGUF quantisations of Fovea-4B on
+      25 October 2026, from Q2_K (1.9 GB) to f16 (8.4 GB), together with the multi-modal projector files (mmproj) that
+      image input needs. The files are on <a href="https://huggingface.co/mradermacher/fovea-4b-GGUF">Hugging Face</a>,
+      and the full list with sizes is on <a href="https://hf.tst.eu/model#fovea-4b-GGUF">hf.tst.eu</a>.
+    </p>
+    <figure>
+      <img src="images/fovea/mradermacher_gguf.png" alt="List of GGUF quantisations of Sivasuthan/fovea-4b on hf.tst.eu">
+      <figcaption>Source: <a href="https://hf.tst.eu/model#fovea-4b-GGUF">hf.tst.eu/model#fovea-4b-GGUF</a></figcaption>
+    </figure>
+
+
+    <h2>Python SDK</h2>
+    <p>The <a href="https://pypi.org/project/fovea-sdk/0.1.0/">fovea-sdk</a> package on PyPI is a client for a running Fovea server, and can also run the model on your own GPU.</p>
+<pre class="code-block">pip install fovea-sdk              # client only, no extra packages
+pip install "fovea-sdk[local]"     # also runs the model on your own GPU</pre>
+<pre class="code-block">from fovea_sdk import FoveaClient
+
+fovea = FoveaClient("http://127.0.0.1:8000")
+a = fovea.choice("What is the total on the receipt in `image`?",
+                 ["12.40", "14.20", "21.40"], image="receipt.jpg")
+print(a.value, a.probability)</pre>
+
+
+    <h2>Citation</h2>
+<pre class="code-block">@misc{sukumar2026fovea,
+  title        = {Fovea-4B: A Fast, Calibrated Decision Model for Images},
+  author       = {Sukumar, Sivasuthan},
+  year         = {2026},
+  howpublished = {\url{https://huggingface.co/Sivasuthan/fovea-4b}}
+}</pre>
+
+    <p style="text-align:right;font-size:small;margin-top:30px;">
+      Website template from Jathushan Rajasegaran <a href="https://brjathu.github.io/">here</a>,
+      whose source is from Jon Barron <a href="https://jonbarron.info/">here</a>
+    </p>
+
+  </div>
+  <script src="downloads.js"></script>
+</body>
+
+</html>
